@@ -28,5 +28,15 @@ RUN apt-get -y update && apt-get -y install python$PYTHON_VERSION-dev wget unzip
     # install
     && cd /opencv/build && make -j$(nproc) && make install && ldconfig 
 
+# clean
+RUN apt-get clean   
+
+WORKDIR /root
+
+# TensorBoard
+EXPOSE 6006
+# IPython
+EXPOSE 8888
+
 # Define default command.
-CMD ["python"]
+CMD ["bash"]
